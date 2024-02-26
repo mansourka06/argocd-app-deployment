@@ -23,18 +23,22 @@ To install Argo CD in your Kubernetes cluster, follow these steps:
 bash```
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/core-install.yaml
+```
  
 - 2. Wait for all Argo CD pods to be in a Running state:
 bash```
 kubectl wait --for=condition=Ready pod -l app.kubernetes.io/name=argocd-server -n argocd
+```
 
 - 3. Retrieve the Argo CD server password:
 bash```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode
+```
 
 - 4. Access the Argo CD UI by port-forwarding the Argo CD server service to your local machine:
 bash```
 kubectl port-forward svc/argocd-server -n argocd 8080:443
+```
 
 > Then, open your browser and navigate to https://localhost:8080 and log in using the username admin and the password retrieved in step 3.
 
