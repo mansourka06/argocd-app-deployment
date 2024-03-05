@@ -12,20 +12,20 @@ Before you begin, ensure you have the following prerequisites:
 - kubectl command-line tool installed and configured to access your cluster
 
 ## Completion steps
-- 1. Install [Argo CD](https://argo-cd.readthedocs.io/en/stable/getting_started/)
-- 2. Create a sample application and sync it.
+1. Install [Argo CD](https://argo-cd.readthedocs.io/en/stable/getting_started/)
+2. Create a sample application and sync it.
 
 
 ### Installation
 To install Argo CD in your Kubernetes cluster, follow these steps:
 
-- 1. Apply the Argo CD manifests using the following command:     
+1. Apply the Argo CD manifests using the following command:     
  ```
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/core-install.yaml
 ```
  
-- 2. Wait for all Argo CD pods to be in a Running state:
+2. - Wait for all Argo CD pods to be in a Running state:
 ```
 kubectl wait --for=condition=Ready pod -l app.kubernetes.io/name=argocd-server -n argocd
 ```
