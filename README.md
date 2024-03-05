@@ -20,6 +20,7 @@ Before you begin, ensure you have the following prerequisites:
 To install Argo CD in your Kubernetes cluster, follow these steps:
 
 - 1. Apply the Argo CD manifests using the following command:
+     
 bash```
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/core-install.yaml
