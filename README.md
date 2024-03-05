@@ -19,30 +19,30 @@ Before you begin, ensure you have the following prerequisites:
 ### Installation
 To install Argo CD in your Kubernetes cluster, follow these steps:
 
-1. Apply the Argo CD manifests using the following command:     
+1. **Apply the Argo CD manifests using the following command**:     
  ```
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/core-install.yaml
 ```
  
-2. - Wait for all Argo CD pods to be in a Running state:
+2. **Wait for all Argo CD pods to be in a Running state**:
 ```
 kubectl wait --for=condition=Ready pod -l app.kubernetes.io/name=argocd-server -n argocd
 ```
 
-- 3. Retrieve the Argo CD server password:
+3. **Retrieve the Argo CD server password**:
 ```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode
 ```
 
-- 4. Access the Argo CD UI by port-forwarding the Argo CD server service to your local machine:
+4. **Access the Argo CD UI by port-forwarding the Argo CD server service to your local machine**:
 ```
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
-> Then, open your browser and navigate to https://localhost:8080 and log in using the username admin and the password retrieved in step 3.
+> Then, open your browser and navigate to `https://localhost:8080` and log in using the username admin and the password retrieved in *step 3*.
 
-### Deploying an Application
+### Deploying the Application
 To deploy an application using Argo CD, follow these steps:
 
 - Log in to the Argo CD UI as admin with the password retrieved during installation.
@@ -60,7 +60,6 @@ To uninstall Argo CD from your Kubernetes cluster, simply delete the Argo CD nam
 ```
 kubectl delete namespace argocd
 ```
-
 
 ## Conclusion
 
